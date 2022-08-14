@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace SpaceInvader.Module.Gameplay
+namespace SpaceInvader.Scene.Gameplay
 {
 	public class GameplayView : BaseSceneView
 	{

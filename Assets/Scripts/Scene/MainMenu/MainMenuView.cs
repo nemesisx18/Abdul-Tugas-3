@@ -5,7 +5,7 @@ using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UI;
 
-namespace SpaceInvader.Module.MainMenu{
+namespace SpaceInvader.Scene.MainMenu{
     public class MainMenuView : BaseSceneView
     {
         [SerializeField]

@@ -6,7 +6,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-namespace SpaceInvader.Module.MainMenu{
+namespace SpaceInvader.Scene.MainMenu{
     public class MainMenuLauncher : SceneLauncher<MainMenuLauncher, MainMenuView>
     {
         public override string SceneName => "MainMenu";

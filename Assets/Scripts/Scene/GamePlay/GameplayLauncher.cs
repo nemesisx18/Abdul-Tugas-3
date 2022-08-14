@@ -5,7 +5,7 @@ using Agate.MVC.Base;
 using Agate.MVC.Core;
 using SpaceInvader.Boot;
 
-namespace SpaceInvader.Module.Gameplay{
+namespace SpaceInvader.Scene.Gameplay{
     public class GameplayLauncher : SceneLauncher<GameplayLauncher, GameplayView>
     {
         public override string SceneName => "Gameplay";
