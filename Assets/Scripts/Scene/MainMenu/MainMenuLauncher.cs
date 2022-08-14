@@ -34,7 +34,7 @@ namespace SpaceInvader.Module.MainMenu{
 
         private void OnClickPlayButton()
         {
-            SceneManager.LoadScene("Gameplay");
+            SceneLoader.Instance.LoadScene("Gameplay");
         }
     }
 }

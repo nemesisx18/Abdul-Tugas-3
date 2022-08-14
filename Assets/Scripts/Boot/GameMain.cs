@@ -3,6 +3,7 @@ using Agate.MVC.Core;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 namespace SpaceInvader.Boot
 {
@@ -10,17 +11,26 @@ namespace SpaceInvader.Boot
     {
         protected override IConnector[] GetConnectors()
         {
-            throw new System.NotImplementedException();
+            return null;
         }
 
         protected override IController[] GetDependencies()
         {
-            throw new System.NotImplementedException();
+            return null;
         }
 
         protected override IEnumerator StartInit()
         {
-            throw new System.NotImplementedException();
+            CreateEventSystem();
+            yield return null;
+        }
+
+        private void CreateEventSystem()
+        {
+            GameObject obj = new GameObject("Event System");
+            obj.AddComponent<EventSystem>();
+            obj.AddComponent<StandaloneInputModule>();
+            GameObject.DontDestroyOnLoad(obj);
         }
     }
 }

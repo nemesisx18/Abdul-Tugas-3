@@ -12,20 +12,17 @@ namespace SpaceInvader.Boot
 	{
 		protected override ILoad GetLoader()
 		{
-			//return SceneLoader.Instance;
-			return null;
+			return SceneLoader.Instance;
 		}
 
 		protected override IMain GetMain()
 		{
 			return GameMain.Instance;
-			//return null;
 		}
 
 		protected override ISplash GetSplash()
 		{
-			//return SplashScreen.Instance;
-			return null;
+			return SplashScreen.Instance;
 		}
 	}
 }
