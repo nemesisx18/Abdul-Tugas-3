@@ -4,6 +4,7 @@ using UnityEngine;
 using Agate.MVC.Base;
 using Agate.MVC.Core;
 using SpaceInvader.Boot;
+using SpaceInvader.Module.Enemy;
 
 namespace SpaceInvader.Scene.Gameplay{
     public class GameplayLauncher : SceneLauncher<GameplayLauncher, GameplayView>
@@ -17,7 +18,10 @@ namespace SpaceInvader.Scene.Gameplay{
 
         protected override IController[] GetSceneDependencies()
         {
-            return null;
+            return new IController[]
+            {
+                new EnemyController()
+            };
         }
 
         protected override IEnumerator InitSceneObject()
