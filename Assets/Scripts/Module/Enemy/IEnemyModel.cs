@@ -6,9 +6,8 @@ using Agate.MVC.Core;
 
 namespace SpaceInvader.Module.Enemy
 {
-    public class EnemyModel : BaseModel, IEnemyModel
+    public interface IEnemyModel : IBaseModel
     {
-        
 
     }
 }

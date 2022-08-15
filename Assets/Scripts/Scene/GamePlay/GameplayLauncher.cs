@@ -11,21 +11,27 @@ namespace SpaceInvader.Scene.Gameplay{
     {
         public override string SceneName => "Gameplay";
 
+        EnemySpawnerController _enemySpawnerController;
+
         protected override IConnector[] GetSceneConnectors()
         {
-            return null;
+            return new IConnector[]
+            {
+                new EnemySpawnerConnector()
+            };
         }
 
         protected override IController[] GetSceneDependencies()
         {
             return new IController[]
             {
-                new EnemyController()
+                new EnemySpawnerController()
             };
         }
 
         protected override IEnumerator InitSceneObject()
         {
+            _enemySpawnerController.SetView(_view.EnemySpawnerView);
             yield return null;
         }
 

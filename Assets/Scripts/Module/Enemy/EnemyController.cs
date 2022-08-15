@@ -6,7 +6,7 @@ using Agate.MVC.Core;
 
 namespace SpaceInvader.Module.Enemy
 {
-    public class EnemyController : ObjectController<EnemyController, EnemyModel, EnemyView>
+    public class EnemyController : ObjectController<EnemyController, EnemyModel, IEnemyModel, EnemyView>
     {
         
     }

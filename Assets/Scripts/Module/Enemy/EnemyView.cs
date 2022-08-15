@@ -1,26 +1,21 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 using Agate.MVC.Base;
 using Agate.MVC.Core;
 
 namespace SpaceInvader.Module.Enemy
 {
-
-    public class EnemyView : BaseView
+    public class EnemyView : ObjectView<IEnemyModel>
     {
-        [SerializeField] private Transform enemy;
-        private List<Transform> enemyList = new List<Transform>();
-
-        Vector3 walkAmount;
-        float walkDirection = 1f;
+        Vector2 walkAmount;
+        float walkDirection = 1;
         float originalX;
 
         private void Start()
         {
-            Spawner();
-
-            originalX = enemy.transform.position.x;
+            originalX = transform.position.x;
         }
 
         private void FixedUpdate()
@@ -28,33 +23,34 @@ namespace SpaceInvader.Module.Enemy
             MoveEnemy();
         }
 
-        public void Spawner()
-        {
-            enemy.gameObject.SetActive(true);
-
-            foreach (Transform tr in enemy.GetComponentInChildren<Transform>())
-            {
-                enemyList.Add(tr.transform);
-            }
-        }
-
         public void MoveEnemy()
         {
             walkAmount.x = walkDirection * 1 * Time.deltaTime;
 
-            if (walkDirection > 0.0f && enemy.position.x >= originalX + 2.5)
+            if (walkDirection > 0.0f && transform.position.x >= originalX + 0.5)
             {
                 walkDirection = -1.0f;
-                enemy.position = new Vector3(enemy.position.x, 
-                    enemy.position.y - 1, enemy.position.z);
+                transform.position = new Vector3(transform.position.x,
+                    transform.position.y - 1, transform.position.z);
             }
-            else if (walkDirection < 0.0f && enemy.transform.position.x <= originalX - 2.5)
+            else if (walkDirection < 0.0f && transform.transform.position.x <= originalX - 0.5)
             {
                 walkDirection = 1.0f;
-                enemy.position = new Vector3(enemy.position.x, 
-                    enemy.position.y - 1, enemy.position.z);
+                transform.position = new Vector3(transform.position.x,
+                    transform.position.y - 1, transform.position.z);
             }
-            enemy.transform.Translate(walkAmount);
+
+            transform.Translate(walkAmount);
+        }
+
+        protected override void InitRenderModel(IEnemyModel model)
+        {
+            
+        }
+
+        protected override void UpdateRenderModel(IEnemyModel model)
+        {
+            
         }
     }
 }
