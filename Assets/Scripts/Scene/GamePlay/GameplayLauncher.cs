@@ -5,6 +5,7 @@ using Agate.MVC.Base;
 using Agate.MVC.Core;
 using SpaceInvader.Boot;
 using SpaceInvader.Module.Player;
+using SpaceInvader.Module.Input;
 
 namespace SpaceInvader.Scene.Gameplay{
     public class GameplayLauncher : SceneLauncher<GameplayLauncher, GameplayView>
@@ -15,7 +16,10 @@ namespace SpaceInvader.Scene.Gameplay{
 
         protected override IConnector[] GetSceneConnectors()
         {
-            return null;
+            return new IConnector[]
+            {
+                new PlayerConnector()
+            };
         }
 
         protected override IController[] GetSceneDependencies()
@@ -23,6 +27,7 @@ namespace SpaceInvader.Scene.Gameplay{
             return new IController[]
             {
                 new PlayerController(),
+                new InputController()
             };
         }
 

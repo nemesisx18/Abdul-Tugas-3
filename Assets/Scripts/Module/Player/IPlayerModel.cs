@@ -9,5 +9,7 @@ namespace SpaceInvader.Module.Player{
         public float maxLeft { get; }
         public float maxRight { get; }
         public float speed { get; }
+
+        public Vector2 Direction { get; }
     }
 }

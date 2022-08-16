@@ -15,16 +15,23 @@ namespace SpaceInvader.Module.Input
         public override IEnumerator Initialize()
         {
             yield return base.Initialize();
+            _inputActionsManager.Input.Enable();
             _inputActionsManager.Input.Move.performed += OnClick;
         }
 
         private void OnClick(InputAction.CallbackContext context)
         {
             bool isOverUI = EventSystem.current.IsPointerOverGameObject();
-            if(context.performed && !isOverUI)
+            if (context.performed && !isOverUI)
             {
-                Publish<MovePlayerMessage>(new MovePlayerMessage());
+                Publish<MovePlayerMessage>(new MovePlayerMessage(context.ReadValue<Vector2>()));
             }
+        }
+
+        public override IEnumerator Terminate()
+        {
+            _inputActionsManager.Input.Disable();
+            return base.Terminate();
         }
     }
 }

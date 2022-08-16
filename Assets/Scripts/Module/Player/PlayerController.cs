@@ -28,9 +28,9 @@ namespace SpaceInvader.Module.Player{
             view.SetCallBacks(OnMovePlayer);
         }*/
 
-        public void OnMovePlayer(MovePlayerMessage message)
+        public void OnMovePlayer(Vector2 message)
         {
-
+            _model.SetDirection(message);
         }
     }
 }

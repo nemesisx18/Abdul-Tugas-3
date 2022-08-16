@@ -8,35 +8,23 @@ using UnityEngine.Events;
 namespace SpaceInvader.Module.Player{
     public class PlayerView : ObjectView<IPlayerModel>
     {
-
-        //private UnityAction _onMovePlayer;
+        private Vector2 direction;
+        private float speed;
 
         protected override void InitRenderModel(IPlayerModel model)
         {
-            //throw new System.NotImplementedException();
+            direction = Vector2.zero;
         }
 
         protected override void UpdateRenderModel(IPlayerModel model)
         {
-            //throw new System.NotImplementedException();
+            direction = model.Direction;
+            speed = model.speed;
         }
-
-         /*public void SetCallBacks(UnityAction onMovePlayer)
-        {
-            _onMovePlayer = onMovePlayer;
-        }*/
 
         private void Update()
         {
-            //_onMovePlayer?.Invoke();
-            /*if (Input.GetKey(KeyCode.A) && transform.position.x > _model.maxLeft)
-            {
-                transform.Translate(_model.speed * Time.deltaTime * Vector2.left);
-            }
-            if (Input.GetKey(KeyCode.D) && transform.position.x < _model.maxRight)
-            {
-                transform.Translate(_model.speed * Time.deltaTime * Vector2.right);
-            }*/
+            transform.Translate(direction * Time.deltaTime * speed);
         }
     }
 }
