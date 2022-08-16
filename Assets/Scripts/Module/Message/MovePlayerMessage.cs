@@ -5,11 +5,11 @@ namespace SpaceInvader.Module.Message
 {
     public struct MovePlayerMessage
     {
-        public Vector2 Direction { get; }
+        public int DirectionX { get; private set; }
 
-        public MovePlayerMessage(Vector2 dir)
+        public MovePlayerMessage(int dir)
         {
-            Direction = dir;
+            DirectionX = dir;
         }
     }
 }

@@ -28,9 +28,10 @@ namespace SpaceInvader.Module.Player{
             view.SetCallBacks(OnMovePlayer);
         }*/
 
-        public void OnMovePlayer(Vector2 message)
+        public void OnMovePlayer(int dir)
         {
-            _model.SetDirection(message);
+            Vector2 direct = new Vector2(dir, 0);
+            _model.SetDirection(direct);
         }
     }
 }
