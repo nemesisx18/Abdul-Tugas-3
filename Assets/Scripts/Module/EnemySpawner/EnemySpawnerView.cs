@@ -11,9 +11,9 @@ namespace SpaceInvader.Module.Enemy
     {
         [SerializeField] private Transform _transformParent;
         
-        public GameObject SpawnEnemy(float pos)
+        public GameObject SpawnEnemy(float posX, float posY)
         {
-            GameObject enemy = Instantiate(_model.enemyObj.enemyObject, new Vector3(transform.position.x + pos, transform.position.y, transform.position.z) , Quaternion.identity, _transformParent);
+            GameObject enemy = Instantiate(_model.enemyObj.enemyObject, new Vector3(transform.position.x + posX, transform.position.y + posY, transform.position.z) , Quaternion.identity, _transformParent);
 
             return enemy;
         }

@@ -8,6 +8,8 @@ namespace SpaceInvader.Module.Enemy
 {
     public interface IEnemyModel : IBaseModel
     {
-
+        public Vector2 walkAmount { get; }
+        public float walkDirection { get; }
+        public float originalX { get; }
     }
 }

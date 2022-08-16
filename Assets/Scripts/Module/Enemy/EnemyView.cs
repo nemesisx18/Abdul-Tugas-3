@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -9,48 +10,33 @@ namespace SpaceInvader.Module.Enemy
 {
     public class EnemyView : ObjectView<IEnemyModel>
     {
-        Vector2 walkAmount;
-        float walkDirection = 1;
-        float originalX;
+        public float originalX { get; private set; }
+        private UnityAction _onMove;
 
-        private void Start()
+        public void SetCallback(UnityAction OnMove)
         {
-            originalX = transform.position.x;
-        }
-
-        private void FixedUpdate()
-        {
-            MoveEnemy();
-        }
-
-        public void MoveEnemy()
-        {
-            walkAmount.x = walkDirection * 1 * Time.deltaTime;
-
-            if (walkDirection > 0.0f && transform.position.x >= originalX + 0.5)
-            {
-                walkDirection = -1.0f;
-                transform.position = new Vector3(transform.position.x,
-                    transform.position.y - 1, transform.position.z);
-            }
-            else if (walkDirection < 0.0f && transform.transform.position.x <= originalX - 0.5)
-            {
-                walkDirection = 1.0f;
-                transform.position = new Vector3(transform.position.x,
-                    transform.position.y - 1, transform.position.z);
-            }
-
-            transform.Translate(walkAmount);
+            _onMove = OnMove;
         }
 
         protected override void InitRenderModel(IEnemyModel model)
         {
-            
+            originalX = transform.position.x;
+            Debug.Log(originalX);
         }
 
         protected override void UpdateRenderModel(IEnemyModel model)
         {
             
+        }
+
+        private void Start()
+        {
+            
+        }
+
+        private void Update()
+        {
+            _onMove.Invoke();
         }
     }
 }
