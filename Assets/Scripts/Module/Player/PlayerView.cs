@@ -13,6 +13,7 @@ namespace SpaceInvader.Module.Player{
 
         protected override void InitRenderModel(IPlayerModel model)
         {
+            //transform.position = _model.Position;
             direction = Vector2.zero;
         }
 

@@ -14,9 +14,11 @@ namespace SpaceInvader.Module.Player{
 
         public Vector2 Direction { get; private set; }
 
-        internal void SetDirection(Vector2 direction)
+        //public Vector2 Position { get; private set; }
+
+        public void SetDirection(Vector2 direction)
         {
-            Direction = direction;
+            Direction = direction ;
             SetDataAsDirty();
         }
     }

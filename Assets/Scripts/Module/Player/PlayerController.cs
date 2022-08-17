@@ -8,30 +8,10 @@ using UnityEngine;
 namespace SpaceInvader.Module.Player{
     public class PlayerController : ObjectController<PlayerController, PlayerModel, IPlayerModel, PlayerView>
     {
-
-        /*public void OnMovePlayer()
+        public void OnMovePlayer(float x)
         {
-            if (Input.GetKey(_view.inputLeft) && _view.transform.position.x > _model.maxLeft)
-            {
-                _view.transform.Translate(_model.speed * Time.deltaTime * Vector2.left);
-            }
-            if (Input.GetKey(_view.inputRight) && _view.transform.position.x < _model.maxRight)
-            {
-               _view.transform.Translate(_model.speed * Time.deltaTime * Vector2.right);
-            }
-
-        }
-
-        public override void SetView(PlayerView view)
-        {
-            base.SetView(view);
-            view.SetCallBacks(OnMovePlayer);
-        }*/
-
-        public void OnMovePlayer(int dir)
-        {
-            Vector2 direct = new Vector2(dir, 0);
-            _model.SetDirection(direct);
+            Vector2 dir = new Vector2(x, 0);
+            _model.SetDirection(dir);
         }
     }
 }

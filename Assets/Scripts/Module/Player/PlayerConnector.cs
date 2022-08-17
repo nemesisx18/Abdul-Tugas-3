@@ -11,12 +11,17 @@ namespace SpaceInvader.Module.Player
         private PlayerController _player;
         protected override void Connect()
         {
-            Subscribe<MovePlayerMessage>(_player.OnMovePlayer);
+            Subscribe<MovePlayerMessage>(OnControllerMove);
         }
 
         protected override void Disconnect()
         {
-            Unsubscribe<MovePlayerMessage>(_player.OnMovePlayer);
+            Unsubscribe<MovePlayerMessage>(OnControllerMove);
+        }
+
+        void OnControllerMove(MovePlayerMessage message)
+        {
+            _player.OnMovePlayer(message.X);
         }
     }
 }

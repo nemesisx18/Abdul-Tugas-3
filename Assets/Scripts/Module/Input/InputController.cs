@@ -21,11 +21,7 @@ namespace SpaceInvader.Module.Input
 
         private void OnClick(InputAction.CallbackContext context)
         {
-            bool isOverUI = EventSystem.current.IsPointerOverGameObject();
-            if (context.performed && !isOverUI)
-            {
-                Publish<MovePlayerMessage>(new MovePlayerMessage(context.ReadValue<Vector2>()));
-            }
+                Publish<MovePlayerMessage>(new MovePlayerMessage(context.ReadValue<float>()));
         }
 
         public override IEnumerator Terminate()

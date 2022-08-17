@@ -15,4 +15,4 @@ EditorBuildSettings:
     path: Assets/Scenes/SplashScreen.unity
     guid: ecc8e5933129cb542bd08ae5e1c27af5
   m_configObjects:
-    com.unity.input.settings: {fileID: 11400000, guid: cfe8284ce996bfe479a564e286db5879, type: 2}
+    com.unity.input.settings: {fileID: 11400000, guid: 737618756d8c88544b824bc719f59026, type: 2}

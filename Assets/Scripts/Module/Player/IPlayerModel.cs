@@ -11,5 +11,7 @@ namespace SpaceInvader.Module.Player{
         public float speed { get; }
 
         public Vector2 Direction { get; }
+
+        //public Vector2 Position { get; }
     }
 }
