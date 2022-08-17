@@ -135,7 +135,7 @@ GameObject:
   - component: {fileID: 123372653}
   - component: {fileID: 123372652}
   - component: {fileID: 123372651}
-  m_Layer: 5
+  m_Layer: 2
   m_Name: Button (Legacy)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -254,7 +254,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 238854916}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: EnemyParent
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -415,7 +415,7 @@ GameObject:
   m_Component:
   - component: {fileID: 968275672}
   - component: {fileID: 968275671}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: GameplayView
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -435,6 +435,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemySpawnerView: {fileID: 1303783943}
+  bulletPoolView: {fileID: 1397423677}
 --- !u!4 &968275672
 Transform:
   m_ObjectHideFlags: 0
@@ -449,6 +450,7 @@ Transform:
   m_Children:
   - {fileID: 1674566538}
   - {fileID: 1303783942}
+  - {fileID: 1397423676}
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -462,7 +464,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1303783942}
   - component: {fileID: 1303783943}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: EnemySpawnerView
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -477,7 +479,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1303783941}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -6.5, y: 2, z: 0}
+  m_LocalPosition: {x: -6.5, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -498,6 +500,50 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _transformParent: {fileID: 238854916}
+--- !u!1 &1397423675
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1397423676}
+  - component: {fileID: 1397423677}
+  m_Layer: 2
+  m_Name: BulletPoolView
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1397423676
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1397423675}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 968275672}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1397423677
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1397423675}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ebe838ac96be712458256ac1176663f7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1674566534
 GameObject:
   m_ObjectHideFlags: 0
@@ -510,7 +556,7 @@ GameObject:
   - component: {fileID: 1674566537}
   - component: {fileID: 1674566536}
   - component: {fileID: 1674566535}
-  m_Layer: 5
+  m_Layer: 2
   m_Name: Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -610,7 +656,7 @@ GameObject:
   - component: {fileID: 2110872861}
   - component: {fileID: 2110872863}
   - component: {fileID: 2110872862}
-  m_Layer: 5
+  m_Layer: 2
   m_Name: Text (Legacy)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
