@@ -37,6 +37,15 @@ namespace SpaceInvader.Module.Input
                     ""processors"": """",
                     ""interactions"": ""Press(behavior=2)"",
                     ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""Shoot"",
+                    ""type"": ""Button"",
+                    ""id"": ""8ab7170c-0319-4771-a2bc-4932febaf9d5"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": ""Press(behavior=2)"",
+                    ""initialStateCheck"": true
                 }
             ],
             ""bindings"": [
@@ -72,6 +81,17 @@ namespace SpaceInvader.Module.Input
                     ""action"": ""Move"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""a4569f61-d5e4-4bf7-91c9-f8ab04afc15e"",
+                    ""path"": ""<Keyboard>/space"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""CS"",
+                    ""action"": ""Shoot"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -98,6 +118,7 @@ namespace SpaceInvader.Module.Input
             // Input
             m_Input = asset.FindActionMap("Input", throwIfNotFound: true);
             m_Input_Move = m_Input.FindAction("Move", throwIfNotFound: true);
+            m_Input_Shoot = m_Input.FindAction("Shoot", throwIfNotFound: true);
         }
 
         public void Dispose()
@@ -158,11 +179,13 @@ namespace SpaceInvader.Module.Input
         private readonly InputActionMap m_Input;
         private IInputActions m_InputActionsCallbackInterface;
         private readonly InputAction m_Input_Move;
+        private readonly InputAction m_Input_Shoot;
         public struct InputActions
         {
             private @InputActionManager m_Wrapper;
             public InputActions(@InputActionManager wrapper) { m_Wrapper = wrapper; }
             public InputAction @Move => m_Wrapper.m_Input_Move;
+            public InputAction @Shoot => m_Wrapper.m_Input_Shoot;
             public InputActionMap Get() { return m_Wrapper.m_Input; }
             public void Enable() { Get().Enable(); }
             public void Disable() { Get().Disable(); }
@@ -175,6 +198,9 @@ namespace SpaceInvader.Module.Input
                     @Move.started -= m_Wrapper.m_InputActionsCallbackInterface.OnMove;
                     @Move.performed -= m_Wrapper.m_InputActionsCallbackInterface.OnMove;
                     @Move.canceled -= m_Wrapper.m_InputActionsCallbackInterface.OnMove;
+                    @Shoot.started -= m_Wrapper.m_InputActionsCallbackInterface.OnShoot;
+                    @Shoot.performed -= m_Wrapper.m_InputActionsCallbackInterface.OnShoot;
+                    @Shoot.canceled -= m_Wrapper.m_InputActionsCallbackInterface.OnShoot;
                 }
                 m_Wrapper.m_InputActionsCallbackInterface = instance;
                 if (instance != null)
@@ -182,6 +208,9 @@ namespace SpaceInvader.Module.Input
                     @Move.started += instance.OnMove;
                     @Move.performed += instance.OnMove;
                     @Move.canceled += instance.OnMove;
+                    @Shoot.started += instance.OnShoot;
+                    @Shoot.performed += instance.OnShoot;
+                    @Shoot.canceled += instance.OnShoot;
                 }
             }
         }
@@ -198,6 +227,7 @@ namespace SpaceInvader.Module.Input
         public interface IInputActions
         {
             void OnMove(InputAction.CallbackContext context);
+            void OnShoot(InputAction.CallbackContext context);
         }
     }
 }

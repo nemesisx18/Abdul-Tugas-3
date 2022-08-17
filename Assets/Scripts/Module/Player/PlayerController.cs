@@ -13,5 +13,16 @@ namespace SpaceInvader.Module.Player{
             Vector2 dir = new Vector2(x, 0);
             _model.SetDirection(dir);
         }
+
+        public override void SetView(PlayerView view)
+        {
+            base.SetView(view);
+            view.SetCallbacks(OnCollideWithEnemyBullet);
+        }
+
+        private void OnCollideWithEnemyBullet()
+        {
+            Debug.Log("Tertembak");
+        }
     }
 }
