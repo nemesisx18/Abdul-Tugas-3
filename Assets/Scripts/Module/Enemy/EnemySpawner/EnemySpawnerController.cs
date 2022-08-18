@@ -1,5 +1,9 @@
 using UnityEngine;
 using Agate.MVC.Base;
+using UnityEngine.Events;
+using static UnityEngine.RuleTile.TilingRuleOutput;
+using UnityEditor.Timeline.Actions;
+using static UnityEditor.PlayerSettings;
 
 namespace SpaceInvader.Module.Enemy
 {
@@ -7,7 +11,13 @@ namespace SpaceInvader.Module.Enemy
     {
         //private float ySpawn = 0;
         //private float xSpawn = -1;
+
         
+        public int rows = 3;
+        public int columns = 8;
+
+        public bool hasSpawn;
+
         public void OnDestroy()
         {
             _model.AddEnemy();
@@ -15,11 +25,12 @@ namespace SpaceInvader.Module.Enemy
 
         public void OnRespawn()
         {
-            if(_model.enemyDestroyed == 30)
+            if(_model.enemyDestroyed == 24)
             {
                 _model.ResetEnemy();
-                SpawnEnemyPool(_view.originalPos);
-                
+                SpawnEnemy();
+                _view.transform.position = _view.originalPos;
+
                 Debug.Log("game ended");
             }
         }
@@ -32,44 +43,44 @@ namespace SpaceInvader.Module.Enemy
 
         public void InitEnemyPool()
         {
-            for (int i = 0; i < 30; i++)
+            for (int i = 0; i < rows; i++)
             {
-                //if(xSpawn < 9)
-                //{
-                //    xSpawn += 1;
-                //}
-                //else if(xSpawn == 9)
-                //{
-                //    xSpawn = 0;
-                //}
+                float width = 2f * (columns - 4.5f);
+                float height = 2f * (rows - 4.5f);
 
-                //if(i % 10 == 0)
-                //{
-                //    ySpawn += 1;
-                //}
-                
-                EnemyModel instanceModel = new EnemyModel();
-                GameObject instanceObject = _view.SpawnEnemy();
-                EnemyView instanceView = instanceObject.GetComponent<EnemyView>();
-                EnemyController instance = new EnemyController();
-                InjectDependencies(instance);
-                instance.Init(instanceModel, instanceView);
+                Vector2 centerOffset = new Vector2(-width * 0.5f, -height * 0.5f);
+                Vector3 rowPosition = new Vector3(centerOffset.x, (1f * i) + centerOffset.y, 0f);
 
-                _model.AddEnemyPool(instanceObject);
+                for (int j = 0; j < columns; j++)
+                {
+                    // Create an invader and parent it to this transform
+                    EnemyModel instanceModel = new EnemyModel();
+                    GameObject instanceObject = _view.SpawnEnemy();
+                    EnemyView instanceView = instanceObject.GetComponent<EnemyView>();
+                    EnemyController instance = new EnemyController();
+                    InjectDependencies(instance);
+                    instance.Init(instanceModel, instanceView);
+
+                    _model.AddEnemyPool(instanceObject);
+
+                    // Calculate and set the position of the invader in the row
+                    Vector3 position = rowPosition;
+                    position.x += 1f * j;
+                    instanceObject.transform.localPosition = position;
+                }
             }
         }
 
-        public void SpawnEnemyPool(Vector2 pos)
+        public void SpawnEnemyPool()
         {
-            SpawnEnemy(pos);
+            SpawnEnemy();
         }
 
-        private void SpawnEnemy(Vector2 pos)
+        private void SpawnEnemy()
         {
             for (int i=0; i < _model.pooledEnemy.Count; i++)
             {
                 GameObject enemy = _model.pooledEnemy[i];
-                enemy.transform.position = pos;
                 enemy.SetActive(true);
             }
         }
