@@ -4,21 +4,23 @@ using UnityEngine;
 using Agate.MVC.Base;
 using Agate.MVC.Core;
 using SpaceInvader.Boot;
-using SpaceInvader.Module.Player;
-using SpaceInvader.Module.Input;
+using SpaceInvader.Module.Enemy;
+using SpaceInvader.Module.Bullet;
 
 namespace SpaceInvader.Scene.Gameplay{
     public class GameplayLauncher : SceneLauncher<GameplayLauncher, GameplayView>
     {
         public override string SceneName => "Gameplay";
 
-        private PlayerController _player;
+        EnemySpawnerController _enemySpawnerController;
+        BulletPoolController _bulletPoolController;
 
         protected override IConnector[] GetSceneConnectors()
         {
             return new IConnector[]
             {
-                new PlayerConnector()
+                new EnemySpawnerConnector(),
+                new BulletPoolConnector()
             };
         }
 
@@ -26,14 +28,15 @@ namespace SpaceInvader.Scene.Gameplay{
         {
             return new IController[]
             {
-                new PlayerController(),
-                new InputController()
+                new EnemySpawnerController(),
+                new BulletPoolController()
             };
         }
 
         protected override IEnumerator InitSceneObject()
         {
-            _player.SetView(_view.PlayerView);
+            _enemySpawnerController.SetView(_view.EnemySpawnerView);
+            _bulletPoolController.SetView(_view.BulletPoolView);
             yield return null;
         }
 
