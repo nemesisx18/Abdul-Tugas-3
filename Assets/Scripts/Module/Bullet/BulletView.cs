@@ -25,14 +25,14 @@ namespace SpaceInvader.Module.Bullet
 
         void Update()
         {
-            transform.Translate(Vector2.up * Time.deltaTime);
+            transform.Translate(Vector2.down * Time.deltaTime);
         }
 
-        private void OnColliderEnter2D(Collider2D other)
+        private void OnCollisionEnter2D(Collision2D other)
         {
-            if (other.gameObject.CompareTag("Enemy"))
+            if(other.gameObject.CompareTag("Player"))
             {
-                Debug.Log("hit " + other);
+                Debug.Log("player hit");
             }
         }
     }

@@ -4,7 +4,7 @@ using UnityEngine;
 using Agate.MVC.Base;
 using Agate.MVC.Core;
 using SpaceInvader.Module.Enemy;
-using SpaceInvader.Message;
+using System;
 
 namespace SpaceInvader.Module.Bullet
 {
@@ -65,7 +65,7 @@ namespace SpaceInvader.Module.Bullet
 
         private void SpawnBullet(GameObject bullet)
         {
-            //bullet.transform.position = enemyControl.Model.Position;
+            bullet.transform.position = enemyControl.Model.Position;
             _model.AddBullet(bullet);
             bullet.SetActive(true);
         }
