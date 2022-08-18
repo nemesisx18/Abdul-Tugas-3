@@ -4,6 +4,7 @@ using UnityEngine;
 using Agate.MVC.Base;
 using Agate.MVC.Core;
 using SpaceInvader.Module.Enemy;
+using SpaceInvader.Message;
 using System;
 
 namespace SpaceInvader.Module.Bullet
