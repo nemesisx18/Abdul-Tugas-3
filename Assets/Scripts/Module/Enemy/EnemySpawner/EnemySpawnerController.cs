@@ -5,8 +5,8 @@ namespace SpaceInvader.Module.Enemy
 {
     public class EnemySpawnerController : ObjectController<EnemySpawnerController, EnemySpawnerModel, IEnemySpawnerModel, EnemySpawnerView>
     {
-        private float ySpawn = 0;
-        private float xSpawn = -1;
+        //private float ySpawn = 0;
+        //private float xSpawn = -1;
         
         public void OnDestroy()
         {
@@ -34,22 +34,22 @@ namespace SpaceInvader.Module.Enemy
         {
             for (int i = 0; i < 30; i++)
             {
-                if(xSpawn < 9)
-                {
-                    xSpawn += 1;
-                }
-                else if(xSpawn == 9)
-                {
-                    xSpawn = 0;
-                }
+                //if(xSpawn < 9)
+                //{
+                //    xSpawn += 1;
+                //}
+                //else if(xSpawn == 9)
+                //{
+                //    xSpawn = 0;
+                //}
 
-                if(i % 10 == 0)
-                {
-                    ySpawn += 1;
-                }
+                //if(i % 10 == 0)
+                //{
+                //    ySpawn += 1;
+                //}
                 
                 EnemyModel instanceModel = new EnemyModel();
-                GameObject instanceObject = _view.SpawnEnemy(1f * xSpawn, ySpawn);
+                GameObject instanceObject = _view.SpawnEnemy();
                 EnemyView instanceView = instanceObject.GetComponent<EnemyView>();
                 EnemyController instance = new EnemyController();
                 InjectDependencies(instance);

@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.Events;
 using Agate.MVC.Base;
 using Agate.MVC.Core;
+using UnityEditor.Timeline.Actions;
 
 namespace SpaceInvader.Module.Enemy
 {
@@ -13,17 +14,45 @@ namespace SpaceInvader.Module.Enemy
         float walkDirection = 1f;
 
         private UnityAction onRespawn;
+        private Vector3 initialPosition;
+
+        public int rows = 5;
+        public int columns = 11;
 
         public void SetCallback(UnityAction OnRespawn)
         {
             onRespawn = OnRespawn;
         }
 
-        public GameObject SpawnEnemy(float posX, float posY)
+        public GameObject SpawnEnemy()
         {
-            GameObject enemy = Instantiate(_model.enemyObj.enemyObject, new Vector3(transform.position.x + posX, transform.position.y + posY, transform.position.z) , Quaternion.identity, gameObject.transform);
+            initialPosition = transform.position;
+            GameObject enemy;
 
+            // Form the grid of invaders
+            for (int i = 0; i < rows; i++)
+            {
+                float width = 2f * (columns - 1);
+                float height = 2f * (rows - 1);
+
+                Vector2 centerOffset = new Vector2(-width * 0.5f, -height * 0.5f);
+                Vector3 rowPosition = new Vector3(centerOffset.x, (2f * i) + centerOffset.y, 0f);
+
+                for (int j = 0; j < columns; j++)
+                {
+                    // Create an invader and parent it to this transform
+                    enemy = Instantiate(_model.enemyObj.enemyObject, transform);
+
+                    // Calculate and set the position of the invader in the row
+                    Vector3 position = rowPosition;
+                    position.x += 2f * j;
+                    enemy.transform.localPosition = position;
+                }
+            }
+            //GameObject enemy = Instantiate(_model.enemyObj.enemyObject, new Vector3(transform.position.x + posX, transform.position.y + posY, transform.position.z) , Quaternion.identity, gameObject.transform);
+            
             return enemy;
+
         }
 
         protected override void InitRenderModel(IEnemySpawnerModel model)
