@@ -6,8 +6,13 @@ using Agate.MVC.Core;
 
 namespace SpaceInvader.Module.Message
 {
-    public struct StartPlayMessage
+    public struct SpawnBulletMessage
     {
+        public Vector2 Pos { get; private set; }
 
+        public SpawnBulletMessage(Vector2 pos)
+        {
+            Pos = pos;
+        }
     }
 }

@@ -11,7 +11,7 @@ namespace SpaceInvader.Module.Bullet
         public EnemyScriptableObject enemyScriptableObject { get; private set; }
 
         public int amountToPool { get; set; }
-        public int maxBullet { get; set; } = 5;
+        public int maxBullet { get; set; } = 6;
 
         public List<GameObject> pooledBullets { get; set; } = new List<GameObject>();
 

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Agate.MVC.Base;
 using Agate.MVC.Core;
-using SpaceInvader.Message;
+using SpaceInvader.Module.Message;
 
 namespace SpaceInvader.Module.Enemy
 {
@@ -11,19 +11,19 @@ namespace SpaceInvader.Module.Enemy
     {
         private EnemySpawnerController _enemySpawner;
 
-        public void InitEnemyPool(StartPlayMessage messagee)
+        public void OnEnemyDestroy(StartPlayMessage messagee)
         {
-            _enemySpawner.InitEnemyPool();
+            _enemySpawner.OnDestroy();
         }
         
         protected override void Connect()
         {
-            Subscribe<StartPlayMessage>(InitEnemyPool);
+            Subscribe<StartPlayMessage>(OnEnemyDestroy);
         }
 
         protected override void Disconnect()
         {
-            Unsubscribe<StartPlayMessage>(InitEnemyPool);
+            Unsubscribe<StartPlayMessage>(OnEnemyDestroy);
         }
     }
 }

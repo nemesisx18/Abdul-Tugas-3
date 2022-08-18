@@ -20,7 +20,7 @@ namespace SpaceInvader.Module.Bullet
 
         public GameObject SpawnBullet(GameObject gameObject)
         {
-            GameObject enemy = Instantiate(gameObject);
+            GameObject enemy = Instantiate(gameObject, this.gameObject.transform);
             return enemy;
         }
     }

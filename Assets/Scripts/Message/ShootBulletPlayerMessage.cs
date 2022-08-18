@@ -6,6 +6,6 @@ namespace SpaceInvader.Module.Message
 {
     public struct ShootBulletPlayerMessage
     {
-
+        
     } 
 }

@@ -10,16 +10,13 @@ namespace SpaceInvader.Module.Enemy
 {
     public class EnemyView : ObjectView<IEnemyModel>
     {
+        private UnityAction onDeath;
         public float originalX { get; private set; }
         float walkDirection = 1f;
-        private UnityAction _onMove;
-        public bool canShoot;
-        public LayerMask layer;
 
-        public void SetCallback(UnityAction OnMove)
+        public void SetCallback(UnityAction OnDeath)
         {
-            _onMove = OnMove;
-            
+            onDeath = OnDeath;
         }
 
         protected override void InitRenderModel(IEnemyModel model)
@@ -44,7 +41,7 @@ namespace SpaceInvader.Module.Enemy
 
         public void MoveEnemy()
         {
-            Vector2 walkAmount = new Vector2(walkDirection * 0.5f * Time.deltaTime, 0);
+            Vector2 walkAmount = new Vector2(walkDirection * 0.2f * Time.deltaTime, 0);
 
             if (walkDirection > 0.0f && transform.position.x >= originalX + 0.5)
             {
@@ -66,7 +63,9 @@ namespace SpaceInvader.Module.Enemy
         {
             if(other.gameObject.CompareTag("Bullet"))
             {
-                Debug.Log("hit by" + other.gameObject);
+                onDeath?.Invoke();
+                other.gameObject.SetActive(false);
+                gameObject.SetActive(false);
             }
         }
     }

@@ -8,6 +8,8 @@ namespace SpaceInvader.Module.Bullet
 {
     public class BulletView : ObjectView<IBulletModel>
     {
+        private float speed = 5;
+        
         protected override void InitRenderModel(IBulletModel model)
         {
 
@@ -18,14 +20,14 @@ namespace SpaceInvader.Module.Bullet
 
         }
 
-        void Start()
-        {
-
-        }
-
         void Update()
         {
-            transform.Translate(Vector2.up * Time.deltaTime);
+            transform.Translate(Vector2.up * speed * Time.deltaTime);
+
+            if(transform.position.y > 5)
+            {
+                gameObject.SetActive(false);
+            }
         }
     }
 }
