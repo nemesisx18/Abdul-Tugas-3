@@ -61,5 +61,13 @@ namespace SpaceInvader.Module.Enemy
 
             transform.Translate(walkAmount);
         }
+
+        private void OnCollisionEnter2D(Collision2D other)
+        {
+            if(other.gameObject.CompareTag("Bullet"))
+            {
+                Debug.Log("hit by" + other.gameObject);
+            }
+        }
     }
 }

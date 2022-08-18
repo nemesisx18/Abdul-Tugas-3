@@ -25,15 +25,7 @@ namespace SpaceInvader.Module.Bullet
 
         void Update()
         {
-            transform.Translate(Vector2.down * Time.deltaTime);
-        }
-
-        private void OnCollisionEnter2D(Collision2D other)
-        {
-            if(other.gameObject.CompareTag("Player"))
-            {
-                Debug.Log("player hit");
-            }
+            transform.Translate(Vector2.up * Time.deltaTime);
         }
     }
 }
