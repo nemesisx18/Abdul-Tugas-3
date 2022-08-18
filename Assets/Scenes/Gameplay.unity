@@ -135,7 +135,7 @@ GameObject:
   - component: {fileID: 123372653}
   - component: {fileID: 123372652}
   - component: {fileID: 123372651}
-  m_Layer: 2
+  m_Layer: 0
   m_Name: Button (Legacy)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -254,7 +254,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 238854916}
-  m_Layer: 2
+  m_Layer: 0
   m_Name: EnemyParent
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -415,7 +415,7 @@ GameObject:
   m_Component:
   - component: {fileID: 968275672}
   - component: {fileID: 968275671}
-  m_Layer: 2
+  m_Layer: 0
   m_Name: GameplayView
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -464,7 +464,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1303783942}
   - component: {fileID: 1303783943}
-  m_Layer: 2
+  m_Layer: 0
   m_Name: EnemySpawnerView
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -510,7 +510,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1397423676}
   - component: {fileID: 1397423677}
-  m_Layer: 2
+  m_Layer: 0
   m_Name: BulletPoolView
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -556,7 +556,7 @@ GameObject:
   - component: {fileID: 1674566537}
   - component: {fileID: 1674566536}
   - component: {fileID: 1674566535}
-  m_Layer: 2
+  m_Layer: 0
   m_Name: Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -656,7 +656,7 @@ GameObject:
   - component: {fileID: 2110872861}
   - component: {fileID: 2110872863}
   - component: {fileID: 2110872862}
-  m_Layer: 2
+  m_Layer: 0
   m_Name: Text (Legacy)
   m_TagString: Untagged
   m_Icon: {fileID: 0}

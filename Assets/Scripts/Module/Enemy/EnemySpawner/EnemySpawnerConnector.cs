@@ -12,12 +12,12 @@ namespace SpaceInvader.Module.Enemy
 
         protected override void Connect()
         {
-            //Subscribe<StartPlayMessage>(_enemySpawner.InitEnemyPool);
+            Subscribe<StartPlayMessage>(_enemySpawner.InitEnemyPool);
         }
 
         protected override void Disconnect()
         {
-            //Unsubscribe<StartPlayMessage>(_enemySpawner.InitEnemyPool);
+            Unsubscribe<StartPlayMessage>(_enemySpawner.InitEnemyPool);
         }
     }
 }

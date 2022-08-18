@@ -13,8 +13,6 @@ namespace SpaceInvader.Module.Enemy
         public float originalX { get; private set; }
         float walkDirection = 1f;
         private UnityAction _onMove;
-        public bool canShoot;
-        public LayerMask layer;
 
         public void SetCallback(UnityAction OnMove)
         {
@@ -60,6 +58,17 @@ namespace SpaceInvader.Module.Enemy
             }
 
             transform.Translate(walkAmount);
+        }
+
+        private void OnCollisionEnter2D(Collision2D other)
+        {
+            Debug.Log(other.gameObject);
+            
+            if(other.gameObject.CompareTag("Bullet"))
+            {
+                Destroy(other.gameObject);
+                Debug.Log("hitt");
+            }
         }
     }
 }

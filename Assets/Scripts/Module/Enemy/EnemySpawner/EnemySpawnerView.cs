@@ -4,6 +4,8 @@ using UnityEngine;
 using UnityEngine.Events;
 using Agate.MVC.Base;
 using Agate.MVC.Core;
+using System;
+using SpaceInvader.Message;
 
 namespace SpaceInvader.Module.Enemy
 {
@@ -26,6 +28,11 @@ namespace SpaceInvader.Module.Enemy
         protected override void UpdateRenderModel(IEnemySpawnerModel model)
         {
             
+        }
+
+        private void OnStart()
+        {
+            Publish<StartPlayMessage>(new StartPlayMessage());
         }
     }
 }
