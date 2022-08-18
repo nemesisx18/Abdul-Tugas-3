@@ -13,5 +13,7 @@ namespace SpaceInvader.Module.Player{
         public Vector2 Direction { get; }
 
         public Vector2 Position { get; }
+
+        public int Health { get; }
     }
 }
