@@ -44,7 +44,7 @@ namespace SpaceInvader.Module.Input
                     ""id"": ""8ab7170c-0319-4771-a2bc-4932febaf9d5"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
-                    ""interactions"": ""Press(behavior=2)"",
+                    ""interactions"": ""Press"",
                     ""initialStateCheck"": true
                 }
             ],

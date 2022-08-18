@@ -16,12 +16,18 @@ namespace SpaceInvader.Module.Input
         {
             yield return base.Initialize();
             _inputActionsManager.Input.Enable();
-            _inputActionsManager.Input.Move.performed += OnClick;
+            _inputActionsManager.Input.Move.performed += OnMoveSpace;
+            _inputActionsManager.Input.Shoot.performed += OnShootSpace;
         }
 
-        private void OnClick(InputAction.CallbackContext context)
+        private void OnMoveSpace(InputAction.CallbackContext context)
         {
-                Publish<MovePlayerMessage>(new MovePlayerMessage(context.ReadValue<float>()));
+            Publish<MovePlayerMessage>(new MovePlayerMessage(context.ReadValue<float>()));
+        }
+
+        private void OnShootSpace(InputAction.CallbackContext context)
+        {
+            Publish<ShootBulletPlayerMessage>(new ShootBulletPlayerMessage());
         }
 
         public override IEnumerator Terminate()
