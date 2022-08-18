@@ -4,6 +4,9 @@ using UnityEngine;
 using Agate.MVC.Base;
 using Agate.MVC.Core;
 using SpaceInvader.Boot;
+using SpaceInvader.Module.Player;
+using SpaceInvader.Module.Input;
+using SpaceInvader.Module.BulletPlayer;
 using SpaceInvader.Module.Enemy;
 using SpaceInvader.Module.Bullet;
 
@@ -19,6 +22,8 @@ namespace SpaceInvader.Scene.Gameplay{
         {
             return new IConnector[]
             {
+                new PlayerConnector(),
+                new BulletPlayerConnector()
                 
                 
                 new EnemySpawnerConnector()
@@ -29,6 +34,9 @@ namespace SpaceInvader.Scene.Gameplay{
         {
             return new IController[]
             {
+                new PlayerController(),
+                new InputController(),
+                new BulletPlayerController()
                 
                 
                 
