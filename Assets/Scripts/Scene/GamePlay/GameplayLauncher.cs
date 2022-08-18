@@ -23,9 +23,7 @@ namespace SpaceInvader.Scene.Gameplay{
             return new IConnector[]
             {
                 new PlayerConnector(),
-                new BulletPlayerConnector()
-                
-                
+                new BulletPlayerConnector(),
                 new EnemySpawnerConnector()
             };
         }
@@ -36,10 +34,7 @@ namespace SpaceInvader.Scene.Gameplay{
             {
                 new PlayerController(),
                 new InputController(),
-                new BulletPlayerController()
-                
-                
-                
+                new BulletPlayerController(),
                 new EnemySpawnerController(),
                 new BulletPoolController()
             };
