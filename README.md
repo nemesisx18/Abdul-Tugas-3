@@ -11,3 +11,6 @@ Scene GamePlay
 - HUD (Health) - Abdul Aziz Ichwani
 - GameOver - Abdul Aziz Ichwani
 - Shield - Abdul Aziz Ichwani
+- Enemy & EnemyPool - Abdullah
+- BulletPool - Abdullah
+- Score & SaveData - Abdullah
