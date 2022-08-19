@@ -27,10 +27,10 @@ namespace SpaceInvader.Module.SaveData
             SaveData();
         }
 
-        public override IEnumerator Initialize()
-        {
-            yield return base.Initialize();
-            LoadData();        
-        }
+        //public override IEnumerator Initialize()
+        //{
+        //    yield return base.Initialize();
+        //    LoadData();        
+        //}
     }
 }
