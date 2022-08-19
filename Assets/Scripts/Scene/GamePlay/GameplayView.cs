@@ -38,7 +38,6 @@ namespace SpaceInvader.Scene.Gameplay
 		public GameOverView GameOverView => gameOverView;
 
 		public ShieldView ShieldView => shieldView;
-	}
 
         public void SetCallbacks(UnityAction onClickBackButton)
         {

@@ -54,7 +54,7 @@ namespace SpaceInvader.Scene.Gameplay{
                 new BulletPlayerController(),
                 new EnemySpawnerController(),
                 new BulletPoolController(),
-                new ShieldController()
+                new ShieldController(),
                 new BulletPoolController(),
                 new SaveDataController(),
                 new ScoreController()

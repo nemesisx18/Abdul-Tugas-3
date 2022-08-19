@@ -60,6 +60,7 @@ namespace SpaceInvader.Module.Player{
             if (isTriggerWithBulletEnemy)
             {
                 _onTriggerWithBulletEnemy?.Invoke();
+                collision.gameObject.SetActive(false);
             }
         }
 
