@@ -16,6 +16,8 @@ namespace SpaceInvader.Module.Player{
 
         public Vector2 Position { get; private set; }
 
+        public int Health { get; private set; } = 3;
+
         public void SetDirection(Vector2 direction)
         {
             Direction = direction ;
@@ -25,6 +27,12 @@ namespace SpaceInvader.Module.Player{
         public void SetPosition(Vector2 position)
         {
             Position = position ;
+            SetDataAsDirty();
+        }
+
+        public void Damaged()
+        {
+            Health -= 1;
             SetDataAsDirty();
         }
     }

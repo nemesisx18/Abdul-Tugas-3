@@ -10,6 +10,9 @@ using SpaceInvader.Module.BulletPlayer;
 using SpaceInvader.Module.Enemy;
 using SpaceInvader.Module.Bullet;
 using SpaceInvader.Module.Message;
+using SpaceInvader.Module.HUD;
+using SpaceInvader.Module.GameOver;
+using SpaceInvader.Module.Shield;
 using SpaceInvader.Module.SaveData;
 using SpaceInvader.Module.Score;
 
@@ -18,15 +21,20 @@ namespace SpaceInvader.Scene.Gameplay{
     {
         public override string SceneName => "Gameplay";
 
+        HUDController _hud;
+        GameOverController _gameOver;
         EnemySpawnerController _enemySpawnerController;
         BulletPoolController _bulletPoolController;
         PlayerController _playerController;
+        ShieldController _shieldController;
         ScoreController _scoreController;
 
         protected override IConnector[] GetSceneConnectors()
         {
             return new IConnector[]
             {
+                new HUDConnector(),
+                new GameOverConnector(),
                 new PlayerConnector(),
                 new BulletPoolConnector(),
                 new EnemySpawnerConnector(),
@@ -39,10 +47,14 @@ namespace SpaceInvader.Scene.Gameplay{
         {
             return new IController[]
             {
+                new HUDController(),
+                new GameOverController(),
                 new PlayerController(),
                 new InputController(),
                 new BulletPlayerController(),
                 new EnemySpawnerController(),
+                new BulletPoolController(),
+                new ShieldController()
                 new BulletPoolController(),
                 new SaveDataController(),
                 new ScoreController()
@@ -51,9 +63,12 @@ namespace SpaceInvader.Scene.Gameplay{
 
         protected override IEnumerator InitSceneObject()
         {
+            _hud.SetView(_view.HUDView);
+            _gameOver.SetView(_view.GameOverView);
             _enemySpawnerController.SetView(_view.EnemySpawnerView);
             _bulletPoolController.SetView(_view.BulletPoolView);
             _playerController.SetView(_view.PlayerView);
+            _shieldController.SetView(_view.ShieldView);
             _scoreController.SetView(_view.ScoreView);
 
             _view.SetCallbacks(OnClickBackButton);

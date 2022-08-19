@@ -1,4 +1,5 @@
 using Agate.MVC.Base;
+using SpaceInvader.Message;
 using SpaceInvader.Module.Input;
 using SpaceInvader.Module.Message;
 using System.Collections;
@@ -24,12 +25,19 @@ namespace SpaceInvader.Module.Player{
         public override void SetView(PlayerView view)
         {
             base.SetView(view);
-            view.SetCallbacks(OnCollideWithEnemyBullet);
+            view.SetCallbacks(OnCollideWithEnemyBullet, OnGameOver);
         }
 
         private void OnCollideWithEnemyBullet()
         {
+            _model.Damaged();
+            Publish<ReduceHealthMessage>(new ReduceHealthMessage(_model.Health));
             Debug.Log("Tertembak");
+        }
+
+        private void OnGameOver()
+        {
+            Publish<GameOverMessage>(new GameOverMessage());
         }
     }
 }
