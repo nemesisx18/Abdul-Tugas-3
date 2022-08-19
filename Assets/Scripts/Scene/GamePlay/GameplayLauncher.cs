@@ -12,6 +12,7 @@ using SpaceInvader.Module.Bullet;
 using SpaceInvader.Module.Message;
 using SpaceInvader.Module.HUD;
 using SpaceInvader.Module.GameOver;
+using SpaceInvader.Module.Shield;
 
 namespace SpaceInvader.Scene.Gameplay{
     public class GameplayLauncher : SceneLauncher<GameplayLauncher, GameplayView>
@@ -23,6 +24,7 @@ namespace SpaceInvader.Scene.Gameplay{
         EnemySpawnerController _enemySpawnerController;
         BulletPoolController _bulletPoolController;
         PlayerController _playerController;
+        ShieldController _shieldController;
 
         protected override IConnector[] GetSceneConnectors()
         {
@@ -46,7 +48,8 @@ namespace SpaceInvader.Scene.Gameplay{
                 new InputController(),
                 new BulletPlayerController(),
                 new EnemySpawnerController(),
-                new BulletPoolController()
+                new BulletPoolController(),
+                new ShieldController()
             };
         }
 
@@ -57,6 +60,7 @@ namespace SpaceInvader.Scene.Gameplay{
             _enemySpawnerController.SetView(_view.EnemySpawnerView);
             _bulletPoolController.SetView(_view.BulletPoolView);
             _playerController.SetView(_view.PlayerView);
+            _shieldController.SetView(_view.ShieldView);
             yield return null;
         }
 
